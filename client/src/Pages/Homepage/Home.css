@@ -1,0 +1,17 @@
+/* Nav Section */
+#navSection {
+    border-right: 1px solid black;
+    list-style-type: none;
+}
+
+
+/* Content Section */
+#contentSection {
+
+}
+
+
+/* Trend Section */
+#trendSection {
+    border-left: 1px solid black;
+}

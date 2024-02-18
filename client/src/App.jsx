@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import Nav from './components/header/nav';
+import Navbar from './Components/NavBar/NavContent'
 
 import './App.css'
 
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      <Nav />
+      <Navbar />
       <ApolloProvider client={client}>
           <Outlet />
       </ApolloProvider>
