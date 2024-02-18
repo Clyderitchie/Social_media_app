@@ -2,8 +2,8 @@ function TabGroup({ links }) {
 
     return (
         <>
-            <ul>
-                <li>{links.map((link) => link)}</li>
+            <ul >
+                {links.map((link) => link)}
                 
             </ul>
         </>

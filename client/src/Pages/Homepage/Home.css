@@ -1,17 +1,33 @@
 /* Nav Section */
 #navSection {
-    border-right: 1px solid black;
+    
+   
+}
+
+.tabList{
     list-style-type: none;
+    font-size: xx-large;
+    margin-top: 5%;
+    padding-left: 3%;
+    text-align: left;
 }
 
 
 /* Content Section */
 #contentSection {
-
+    border-right: 2px solid black;
+    border-left: 2px solid black;
 }
 
+.createPost{
+    margin-bottom: 5%;
+}
+
+#newPost {
+    z-index: 1%;
+}
 
 /* Trend Section */
 #trendSection {
-    border-left: 1px solid black;
+    
 }

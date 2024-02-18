@@ -6,22 +6,22 @@ function Tabs() {
     return (
         <TabGroup links={[
             <Link key={1} className='text-decoration-none text-dark'>
-                <li>Home</li>
+                <li className='tabList'>Home</li>
             </Link>,
             <Link key={2} className='text-decoration-none text-dark'>
-                <li>Explore</li>
+                <li className='tabList'>Explore</li>
             </Link>,
             <Link key={3} className='text-decoration-none text-dark'>
-                <li>Notifications</li>
+                <li className='tabList'>Notifications</li>
             </Link>,
             <Link key={4} className='text-decoration-none text-dark'>
-                <li>Messages</li>
+                <li className='tabList'>Messages</li>
             </Link>,
             <Link key={5} className='text-decoration-none text-dark'>
-               <li>Profile</li>
+               <li className='tabList'>Profile</li>
             </Link>,
             <Link key={6} className='text-decoration-none text-dark'>
-                <li>More</li>
+                <li className='tabList'>More</li>
             </Link>
         ]} />
     )

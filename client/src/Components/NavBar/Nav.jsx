@@ -10,7 +10,7 @@ function Nav({ links }) {
                         <div className="container-fluid">
                             <h1 className="bolder">
                                 <a className="text-decoration-none text-light" href="/">
-                                    Teller App
+                                    Social Network
                                 </a>
                             </h1>
                             <div id="navDropdown" className="btn-group" role="group">
