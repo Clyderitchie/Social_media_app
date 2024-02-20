@@ -1,10 +1,11 @@
 import React from 'react';
 
-import Search from '../../Components/SearchBar/Searchbar';
 import Tabs from '../../Components/TabSection/Tabs';
 import CreatePost from '../../Components/PostContainer/CreatePost'
 import Post from '../../Components/PostContainer/Post';
 import ImagePost from '../../Components/PostContainer/ImagePost';
+import TopTrends from '../../Components/WhatsHappening/TopTrends';
+import Trends from '../../Components/WhatsHappening/TrendingContainer';
 
 import './Home.css'
 
@@ -23,7 +24,7 @@ function Home () {
                         <ImagePost />
                     </div>
                     <div id="trendSection" className="col-3">
-                        <Search />
+                        <TopTrends />
                     </div>
                 </div>
             </div>

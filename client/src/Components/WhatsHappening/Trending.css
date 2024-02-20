@@ -1,0 +1,8 @@
+#trendCard {
+    width: 146%;
+}
+
+#topTrends {
+    display: flex;
+    flex-direction: column;
+}
