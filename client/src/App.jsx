@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from './Components/NavBar/Nav'
 import Home from './Pages/Homepage/Home.jsx';
 import Login from './Pages/Login/Login.jsx';
+import Profile from './Pages/Profilepage/Profile.jsx';
 
 import './index.css'
 import './App.css'
@@ -43,10 +44,10 @@ function App() {
     setIsLoggedIn(true);
   };
 
-  // const handleLogout = () => {
-  //   localStorage.removeItem('token');
-  //   setIsLoggedIn(false);
-  // };
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+  };
 
   return (
     <>
@@ -56,6 +57,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login handleLogin={handleLogin} />} />
+            <Route path='profile' element={<Profile />}/>
           </Routes>
         </Router>
       </ApolloProvider>

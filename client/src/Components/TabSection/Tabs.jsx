@@ -17,7 +17,7 @@ function Tabs() {
             <Link key={4} className='text-decoration-none text-dark'>
                 <li className='tabList'>Messages</li>
             </Link>,
-            <Link key={5} className='text-decoration-none text-dark'>
+            <Link key={5} className='text-decoration-none text-dark' to='/profile'>
                <li className='tabList'>Profile</li>
             </Link>,
             <Link key={6} className='text-decoration-none text-dark'>
