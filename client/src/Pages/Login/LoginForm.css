@@ -1,0 +1,16 @@
+#loginFormContainer {
+    margin-top: 4%;
+    padding: 2%;
+}
+
+.login-form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 75%;
+}
+
+/* .submit-button {
+    width: 25%;
+    right: 25%;
+} */
