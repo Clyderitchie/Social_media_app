@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
+
 import TabGroup from './Tabgroup';
+import PostBtn from '../PostButton/Post';
+import ActiveUser from '../AciveUser/ActiveUser';
+
+import'./Tabs.css';
 
 function Tabs() {
 
     return (
         <TabGroup links={[
-            <Link key={1} className='text-decoration-none text-dark'>
+            <Link key={1} id="tabGroup" className='text-decoration-none text-dark' to="/">
                 <li className='tabList'>Home</li>
             </Link>,
             <Link key={2} className='text-decoration-none text-dark'>
@@ -22,7 +28,11 @@ function Tabs() {
             </Link>,
             <Link key={6} className='text-decoration-none text-dark'>
                 <li className='tabList'>More</li>
-            </Link>
+            </Link>,
+            <Link key={7} className='postBtn' state= {{userId: Auth.getProfile().data._id}} to="/post">
+                <PostBtn />
+            </Link>,
+            // <ActiveUser />
         ]} />
     )
 };

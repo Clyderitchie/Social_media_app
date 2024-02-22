@@ -1,10 +1,11 @@
+import'./Tabs.css';
+
 function TabGroup({ links }) {
 
     return (
         <>
-            <ul >
-                {links.map((link) => link)}
-                
+            <ul id="tabs">
+                {links.map((link) => link)}   
             </ul>
         </>
     )

@@ -13,6 +13,7 @@ import Nav from './Components/NavBar/Nav'
 import Home from './Pages/Homepage/Home.jsx';
 import Login from './Pages/Login/Login.jsx';
 import Profile from './Pages/Profilepage/Profile.jsx';
+import NewPost from './Components/NewPostForm/newPost.jsx';
 
 import './index.css'
 import './App.css'
@@ -58,6 +59,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login handleLogin={handleLogin} />} />
             <Route path='profile' element={<Profile />}/>
+            <Route path='post' element={<NewPost />} />
           </Routes>
         </Router>
       </ApolloProvider>

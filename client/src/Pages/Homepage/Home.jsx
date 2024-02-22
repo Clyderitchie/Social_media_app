@@ -6,6 +6,7 @@ import CreatePost from '../../Components/PostContainer/CreatePost'
 import Post from '../../Components/PostContainer/Post';
 import ImagePost from '../../Components/PostContainer/ImagePost';
 import TopTrends from '../../Components/WhatsHappening/TopTrends';
+import PostBtn from '../../Components/PostButton/Post';
 
 
 import './Home.css'

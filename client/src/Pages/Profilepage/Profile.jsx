@@ -27,11 +27,29 @@ function Profile() {
                         <div className="card">
                             <img src="https://placehold.co/600x200" alt="Profile Header" />
                             <img id="profilePic" className="rounded-circle" src="https://placehold.co/10x10" alt="Profile Picture" />
+                            <div className="d-flex justify-content-end">
+                            <button id="editProfileBtn" className='btn btn-dark rounded-pill'>Edit profile</button>
+                            </div>
                             <div className="card-body">
                                 <h1>{user.username}</h1>
-                                <h6>{user.bio.text} {user.bio.website}</h6>
-                                <p>{user.bio.location} {user.bio.birthday}</p>
-                                edit profile, follower, following 
+                                <h6 className='bioData'>{user.bio.text} {user.bio.website}</h6>
+                                <p className='bioData'>{user.bio.location} {user.bio.birthday}</p>
+                                <a className="text-decoration-none text-dark ms-3" href="#">Following</a>
+                                <a className="text-decoration-none text-dark ms-5" href="#">Followers</a>
+                                <ul className="nav nav-underline mt-4">
+                                    <li className="nav-item ProfileTabs">
+                                        <a href="#" aria-current="page" className="nav-link text-dark">Posts</a>
+                                    </li>
+                                    <li className="nav-item ProfileTabs">
+                                    <a href="#" aria-current="page" className="nav-link text-dark">Replies</a> 
+                                    </li>
+                                    <li className="nav-item ProfileTabs">
+                                    <a href="#" aria-current="page" className="nav-link text-dark"> Media</a>
+                                    </li>
+                                    <li className="nav-item ProfileTabs">
+                                    <a href="#" aria-current="page" className="nav-link text-dark"> Likes</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
