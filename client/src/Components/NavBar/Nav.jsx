@@ -11,7 +11,7 @@ function Nav() {
                     <nav className="navbar navbar-expand-lg bg-dark">
                         <div id="nav" className="container-fluid d-flex justify-content-center">
                             <h1 className="bolder siteName">
-                                <a className="text-decoration-none text-light siteName" href="/">
+                                <a className="text-decoration-none text-light siteName" href="/home">
                                     Social Network
                                 </a>
                             </h1>

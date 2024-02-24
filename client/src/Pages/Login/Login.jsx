@@ -23,7 +23,7 @@ const Login = ({ handleLogin }) => {
             console.log('Login success:', data);
             localStorage.setItem('token', data.login.token);
             handleLogin();
-            navigate("/");
+            navigate("/home");
         },
     });
 

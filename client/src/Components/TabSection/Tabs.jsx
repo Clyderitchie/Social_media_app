@@ -11,7 +11,7 @@ function Tabs() {
 
     return (
         <TabGroup links={[
-            <Link key={1} id="tabGroup" className='text-decoration-none text-dark' to="/">
+            <Link key={1} id="tabGroup" className='text-decoration-none text-dark' to="/home" state= {{userId: Auth.getProfile().data._id}}>
                 <li className='tabList'>Home</li>
             </Link>,
             <Link key={2} className='text-decoration-none text-dark'>
@@ -29,7 +29,7 @@ function Tabs() {
             <Link key={6} className='text-decoration-none text-dark'>
                 <li className='tabList'>More</li>
             </Link>,
-            <Link key={7} className='postBtn' state= {{userId: Auth.getProfile().data._id}} to="/post">
+            <Link key={7} className='postBtn' state= {{userId: Auth.getProfile().data._id}} >
                 <PostBtn />
             </Link>,
             // <ActiveUser />

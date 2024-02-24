@@ -14,6 +14,7 @@ import Home from './Pages/Homepage/Home.jsx';
 import Login from './Pages/Login/Login.jsx';
 import Profile from './Pages/Profilepage/Profile.jsx';
 import NewPost from './Components/NewPostForm/newPost.jsx';
+import Auth from './utils/auth.js';
 
 import './index.css'
 import './App.css'
@@ -56,8 +57,8 @@ function App() {
       <ApolloProvider client={client}>
         <Router>
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login handleLogin={handleLogin} />} />
+            <Route path='/home' element={<Home />} />
+            <Route path='/' element={<Login handleLogin={handleLogin} state= {{userId: Auth.getProfile().data._id}}/>} />
             <Route path='profile' element={<Profile />}/>
             <Route path='post' element={<NewPost />} />
           </Routes>

@@ -36,20 +36,22 @@ function NewPost() {
     return (
         <>
 
-            <div className="container mt-4">
+            {/* <div className="container mt-4">
                 <div className="row">
                     <div id="navSection" className="col-3">
                         <Tabs />
                     </div>
                     <div id="contentSection" className="col-6">
-                        <input id="newPostInput" type="text" className="form-control" placeholder="Post" onSubmit={handlesubmit} value={text} onChange={(e) => setText(e.target.value)} />
-                        <button type="submit" className='btn btn-dark rounded-pill'>Post</button>
+                        <form id="newPostForm" className="form" onSubmit={handlesubmit}>
+                            <input id="newPostInput" type="text" className="form-label" placeholder="Post" value={text} onChange={(e) => setText(e.target.value)} />
+                            <button type="submit" className='btn btn-dark rounded-pill'>Post</button>
+                        </form>
                     </div>
                     <div id="trendSection" className="col-3">
                         <TopTrends />
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 

@@ -32,8 +32,8 @@ function Profile() {
                             </div>
                             <div className="card-body">
                                 <h1>{user.username}</h1>
-                                <h6 className='bioData'>{user.bio.text} {user.bio.website}</h6>
-                                <p className='bioData'>{user.bio.location} {user.bio.birthday}</p>
+                                {/* <h6 className='bioData'>{user.bio.text} {user.bio.website}</h6> */}
+                                {/* <p className='bioData'>{user.bio.location} {user.bio.birthday}</p> */}
                                 <a className="text-decoration-none text-dark ms-3" href="#">Following</a>
                                 <a className="text-decoration-none text-dark ms-5" href="#">Followers</a>
                                 <ul className="nav nav-underline mt-4">
