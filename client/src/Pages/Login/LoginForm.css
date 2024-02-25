@@ -14,3 +14,19 @@
     width: 25%;
     right: 25%;
 } */
+
+#signupFormContainer {
+    margin-top: 4%;
+    padding: 2%;
+}
+
+.signup-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 75%;
+}
+
+.signUpField {
+    width: 100%;
+}

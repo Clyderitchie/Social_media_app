@@ -87,9 +87,9 @@ const Login = ({ handleLogin }) => {
                                     Signup
                                 </h2>
                                 <form id="signupForm" className="d-flex flex-column" onSubmit={handleSignUpSubmit}>
-                                    <input type="email" className="input-field p-1 mb-3 mt-3" placeholder="Email" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
-                                    <input type='text' className='input-field p-1 mb-3 mt-3' placeholder='Username' value={signupUsername} onChange={(e) => setSignupUsername(e.target.value)} />
-                                    <input type="password" className='input-field p-1 mb-5 mt-3' placeholder="Password" value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
+                                    <input type="email" className="signUpField input-field p-1 mb-3 mt-3" placeholder="Email" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} />
+                                    <input type='text' className='signUpField input-field p-1 mb-3 mt-3' placeholder='Username' value={signupUsername} onChange={(e) => setSignupUsername(e.target.value)} />
+                                    <input type="password" className='signUpField input-field p-1 mb-5 mt-3' placeholder="Password" value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} />
                                     <div className="d-flex justify-content-end">
                                         <button className="submit-button btn btn-dark w-25 mb-4" type="submit" disabled={createUserLoading}>Signup</button>
                                     </div>
