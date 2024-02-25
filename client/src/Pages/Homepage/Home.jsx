@@ -20,7 +20,7 @@ function Home () {
     const { data } = useQuery(QUERY_ME, { fetchPolicy: 'cache-and-network' });
 
     const user = data?.me || {};
-    console.log("Home page user: ", data);
+    console.log("Home page user: ", user);
 
     return (
         <>

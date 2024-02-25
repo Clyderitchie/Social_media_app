@@ -58,7 +58,7 @@ function App() {
         <Router>
           <Routes>
             <Route path='/home' element={<Home />} />
-            <Route path='/' element={<Login handleLogin={handleLogin} state= {{userId: Auth.getProfile().data._id}}/>} />
+            <Route path='/' element={<Login handleLogin={handleLogin} />} />
             <Route path='profile' element={<Profile />}/>
             <Route path='post' element={<NewPost />} />
           </Routes>
