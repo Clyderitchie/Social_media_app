@@ -1,0 +1,18 @@
+#profilePic {
+    width: 15%;
+    margin-top: -10%;
+    position: sticky;
+}
+
+#editProfileBtn {
+    width: 25%;
+}
+
+.bioData {
+    margin-top: 2%;
+}
+
+.ProfileTabs {
+    margin-left: 12%;
+    margin-bottom: -3%;
+}

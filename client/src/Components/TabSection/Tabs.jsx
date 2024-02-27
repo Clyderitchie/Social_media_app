@@ -32,7 +32,7 @@ function Tabs() {
             <Link key={7} className='postBtn' state= {{userId: Auth.getProfile().data._id}} >
                 <PostBtn />
             </Link>,
-            // <ActiveUser />
+            <ActiveUser />
         ]} />
     )
 };

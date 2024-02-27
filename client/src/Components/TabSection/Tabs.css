@@ -2,6 +2,10 @@
     margin-top: 5%;
 }
 
-.tabList {
-    margin-top: 10%;
+.tabList{
+    list-style-type: none;
+    font-size: xx-large;
+    margin-top: 14%;
+    padding-left: 3%;
+    text-align: left;
 }

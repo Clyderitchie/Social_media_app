@@ -16,11 +16,13 @@ function ActiveUser() {
 
     return (
         <>
-            <div className="container d-flex justify-content-around align-items-center">
-                <img className="rounded-circle" src="https://placehold.co/80x80" alt="User Picture" />
-                <div id="activeUser" className="card border rounded-pill mt-5">
-                    <div className="card-body">
-                        <h5>{user.username}</h5>
+            <div id="activeUserPill" className="container">
+                <div className="row">
+                    <div id="colBor" className="col-3 d-flex justify-content-center">
+                        <img className="rounded-circle" src="https://placehold.co/80x80" alt="User Picture" />
+                    </div>
+                    <div id="colBor1" className="col-5 d-flex justify-content-center align-items-center">
+                        {user.username}
                     </div>
                 </div>
             </div>
