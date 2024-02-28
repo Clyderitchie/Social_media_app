@@ -6,6 +6,7 @@ import Auth from '../../utils/auth';
 import Tabs from '../../Components/TabSection/Tabs';
 import TopTrends from '../../Components/WhatsHappening/TopTrends';
 import UserBio from '../../Components/UserBio/UserBio';
+import UserPost from '../../Components/PostContainer/SingleUserPost';
 
 import './Profile.css';
 
@@ -15,7 +16,6 @@ function Profile() {
     const { data } = useQuery(QUERY_ME, { fetchPolicy: 'cache-and-network' });
 
     const user = data?.me || {};
-    console.log("User: ", data);
 
     return (
         <>
@@ -26,6 +26,7 @@ function Profile() {
                     </div>
                     <div id="contentSection" className="col-6">
                         <UserBio />
+                        <UserPost  />
                     </div>
                     <div id="trendSection" className="col-3">
                         <TopTrends />
