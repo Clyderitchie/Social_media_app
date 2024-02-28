@@ -159,6 +159,7 @@ query Me {
       _id
       text
       picture
+      createdAt
       userId {
         username
       }

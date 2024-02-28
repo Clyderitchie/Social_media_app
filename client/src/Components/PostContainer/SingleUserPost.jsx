@@ -27,7 +27,6 @@ function UserPost() {
 
     return (
         <>
-            Hello
            {data.me.posts.map((post) => (
             <div className="card mb-4" key={post._id}>
                 <div className="card-body">
