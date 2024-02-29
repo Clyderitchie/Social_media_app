@@ -6,7 +6,6 @@ import { QUERY_ME } from '../../utils/queries'
 import Auth from '../../utils/auth';
 
 function UserPost() {
-    // const { user } = props
     const userId = Auth.getProfile().data._id;
 
     const [postContext, setPostContext] = useState([]);

@@ -57,7 +57,7 @@ function App() {
       <ApolloProvider client={client}>
         <Router>
           <Routes>
-            <Route path='/home' element={<Home />} />
+            <Route path='/home' element={<Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} />} />
             <Route path='/' element={<Login handleLogin={handleLogin} />} />
             <Route path='profile' element={<Profile />}/>
             <Route path='post' element={<NewPost />} />

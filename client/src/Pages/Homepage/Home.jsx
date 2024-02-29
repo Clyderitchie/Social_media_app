@@ -14,7 +14,7 @@ import PostBtn from '../../Components/PostButton/Post';
 
 import './Home.css'
 
-function Home () {
+function Home ({ handleLogout, isLoggedIn }) {
     const userId = Auth.getProfile().data._id;
 
     const { data } = useQuery(QUERY_ME, { fetchPolicy: 'cache-and-network' });
@@ -28,7 +28,7 @@ function Home () {
             <div className="container mt-4">
                 <div className="row">
                     <div id="navSection" className="col-3">
-                        <Tabs />
+                        <Tabs logout={handleLogout}/>
                     </div>
                     <div id="contentSection" className="col-6">
                         <CreatePost />

@@ -4,11 +4,12 @@ import Auth from '../../utils/auth';
 import TabGroup from './Tabgroup';
 import PostBtn from '../PostButton/Post';
 import ActiveUser from '../AciveUser/ActiveUser';
-import More from '../MoreSection/MoreBtn';
+// import More from '../MoreSection/MoreBtn';
 
 import'./Tabs.css';
 
-function Tabs() {
+function Tabs(props) {
+    const { logout } = props;
 
     return (
         <TabGroup links={[
@@ -27,8 +28,8 @@ function Tabs() {
             <Link key={5} className='text-decoration-none text-dark' to='/profile'>
                <li className='tabList'>Profile</li>
             </Link>,
-            <Link key={6} className='text-decoration-none text-dark'>
-                <li className='tabList'><More /></li>
+            <Link key={6} className='text-decoration-none text-dark' to="/" onClick={logout}>
+                <li className='tabList'>Logout</li>
             </Link>,
             <Link key={7} className='postBtn' state= {{userId: Auth.getProfile().data._id}} >
                 <PostBtn />
