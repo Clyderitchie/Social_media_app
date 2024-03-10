@@ -26,11 +26,11 @@ mutation createBio($text: String, $website: String, $location: String, $birthday
 
 // Post
 export const CREATE_POST = gql`
-mutation createPost($text: String, $picture: String) {
-  createPost(text: $text, picture: $picture) {
+mutation createPost($text: String, $file: Upload) {
+  createPost(text: $text, file: $file) {
     _id
     text
-    picture
+    file
     userId {
       username
     }

@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const { AuthenticationError, signToken } = require('../utils/auth');
 
 const { User, Post, Comment } = require('../models');
@@ -89,9 +91,28 @@ module.exports = {
 
             return { token, user };
         }, // Done
-        createPost: async (_, args, context) => {
+        createPost: async (_, { file, ...args }, context) => {
             if (context.user) {
-                const post = (await Post.create({ ...args, userId: context.user._id }));
+                let imageUrl = null;
+
+                if (file) {
+                    const { createReadStream, filename, mimetype } = await file;
+                    const fileStream = createReadStream();
+                    const filePath = `./uploadedFiles/${filename}`;
+                    const uploadPath = `${__dirname}/../${filePath}`;
+                    const writeStream = fs.createWriteStream(uploadPath);
+                    fileStream.pipe(writeStream);
+
+                    await new Promise((resolve, reject) => {
+                        writeStream.on('finish', resolve);
+                        writeStream.on('error', reject); 
+                    })
+
+                    imageUrl = filePath;
+                    console.log(imageUrl);
+                }
+
+                const post = (await Post.create({ ...args, userId: context.user._id, imageUrl }));
                 await User.findByIdAndUpdate(context.user._id, { $push: { posts: post._id } }, { new: true })
                 return post.populate("userId")
             }
@@ -156,8 +177,6 @@ module.exports = {
 
             return { token, user };
         }, // Done
-
-
         deletePost: async (_, { postId }) => {
             console.log('Received postId:', postId); // Log the postId
         
@@ -181,7 +200,6 @@ module.exports = {
                 console.error(err);
                 throw new Error('Failed to delete post.');
             }
-        }        
-
+        }
     }
 } // Done

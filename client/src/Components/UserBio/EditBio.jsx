@@ -22,14 +22,11 @@ function EditBio({ userId }) {
             const { data } = await addBio({
                 variables: { userId, text, location, website, birthday }
             })
-            console.log('New bio data: ', data)
             navigate('/profile')
         } catch (err) {
             console.log("Update bio error: ", err);
         }
     }
-
-    console.log(handleSubmit)
 
     return (
         <>

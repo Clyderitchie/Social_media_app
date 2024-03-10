@@ -14,10 +14,10 @@ import './PostStyle.css';
 
 function CreatePost() {
     const userId = Auth.getProfile().data._id;
-    console.log("Create post: ", userId);
     const navigate = useNavigate();
     const location = useLocation();
     const [text, setText] = useState('');
+    const [ file, setFile] = useState(null);
     const [addPost, { error }] = useMutation(CREATE_POST);
 
     const { data: userData } = useQuery(QUERY_ME, { fetchPolicy: 'cache-and-network' });
@@ -28,10 +28,11 @@ function CreatePost() {
         e.preventDefault();
         try {
             const { data } = await addPost({
-                variables: { text }
+                variables: { text, file }
             });
             console.log("New post: ", data);
             setText('');
+            setFile(null);
             navigate('/home');
         } catch (err) {
             console.log("Create Post Error: ", err);
@@ -48,6 +49,9 @@ function CreatePost() {
                     <div id="newPostContainer" className="d-flex justify-content-start mt-2">
                         <input id="newPost" type="text" className="form-control form-control-lg rounded-pill" placeholder="What's going on?" value={text} onChange={(e) => setText(e.target.value)} />
                     </div>
+                    <div id="fileInput" className="d-flex justify-content-start mt-2">
+                            <input className="form-control rounded-pill"  placeholder="Choose a file" type="file" onChange={(e) => setFile(e.target.files[0])} />
+                        </div>
                     <div id="newPostBtn" className="d-flex justify-content-end mt-3">
                         <button type="submit" className="btn btn-dark rounded-pill w-25">Post</button>
                     </div>
