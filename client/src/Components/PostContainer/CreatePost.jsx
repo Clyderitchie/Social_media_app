@@ -14,7 +14,7 @@ import './PostStyle.css';
 
 function CreatePost() {
     const userId = Auth.getProfile().data._id;
-    console.log("Create post: ", userId);
+    // console.log("Create post: ", userId);
     const navigate = useNavigate();
     const location = useLocation();
     const [text, setText] = useState('');
@@ -22,7 +22,7 @@ function CreatePost() {
 
     const { data: userData } = useQuery(QUERY_ME, { fetchPolicy: 'cache-and-network' });
     const user = userData?.me || {};
-    console.log("Create post QUERY_ME: ", user);
+    // console.log("Create post QUERY_ME: ", user);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +30,7 @@ function CreatePost() {
             const { data } = await addPost({
                 variables: { text }
             });
-            console.log("New post: ", data);
+            // console.log("New post: ", data);
             setText('');
             navigate('/home');
         } catch (err) {

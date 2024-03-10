@@ -12,7 +12,7 @@ function ActiveUser() {
     const { data } = useQuery(QUERY_ME, { fetchPolicy: 'cache-and-network' });
 
     const user = data?.me || {};
-    console.log("User: ", data);
+    // console.log("User: ", data);
 
     return (
         <>
