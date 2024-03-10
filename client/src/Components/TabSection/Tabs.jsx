@@ -32,7 +32,7 @@ function Tabs(props) {
                 <li className='tabList'>Logout</li>
             </Link>,
             <Link key={7} className='postBtn' state= {{userId: Auth.getProfile().data._id}} >
-                <PostBtn />
+                {/* <PostBtn /> */}
             </Link>,
             <ActiveUser />
         ]} />

@@ -16,3 +16,14 @@
     margin-left: 12%;
     margin-bottom: -3%;
 }
+
+/* Edit Bio */
+#editBioModal {
+    display: flex;
+    flex-direction: column;
+}
+
+#floatingTextarea2, #floatingTextarea3, #floatingTextarea4, #floatingTextarea5 {
+   min-height: 100px;
+    max-height: 100px;
+}
