@@ -19,7 +19,7 @@ function Post() {
         }
     }, [data]);
 
-    console.log("All post data: ", data);
+    // console.log("All post data: ", data);
 
     if (loading) {
         return <h3>Loading posts...</h3>

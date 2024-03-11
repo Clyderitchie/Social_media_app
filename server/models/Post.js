@@ -11,6 +11,10 @@ const PostSchema = new Schema({
         type: String,
         allowNull: true
     },
+    imageUrl: {
+        type: String,
+        allowNull: true
+    },
     createdAt: {
         type: Date,
         default: Date.now,

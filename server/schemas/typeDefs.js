@@ -20,6 +20,7 @@ scalar Upload
         _id: ID
         text: String
         file: String
+        imageUrl: String
         userId: User
         createdAt: String
         likes: [PostLikes]
@@ -71,7 +72,7 @@ scalar Upload
 
     type Mutation {
         createUser(username: String, password: String, email: String): Auth 
-        createPost(text: String, file: Upload): Post 
+        createPost(text: String, file: Upload, imageUrl: String): Post 
         createComment(text: String, postId: ID): Comment 
         createBio(text: String, website: String, location: String, birthday: String): User
         likePost(postId: ID!): Post

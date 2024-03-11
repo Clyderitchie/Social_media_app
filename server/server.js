@@ -6,7 +6,7 @@ const { authMiddleware } = require('./utils/auth');
 const path = require('path');
 
 const server = new ApolloServer({
-	typeDefs, resolvers, context: authMiddleware
+	typeDefs, resolvers
 });
 
 const app = express();

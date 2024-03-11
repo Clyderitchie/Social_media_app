@@ -91,28 +91,9 @@ module.exports = {
 
             return { token, user };
         }, // Done
-        createPost: async (_, { file, ...args }, context) => {
+        createPost: async (_, args, context) => {
             if (context.user) {
-                let imageUrl = null;
-
-                if (file) {
-                    const { createReadStream, filename, mimetype } = await file;
-                    const fileStream = createReadStream();
-                    const filePath = `./uploadedFiles/${filename}`;
-                    const uploadPath = `${__dirname}/../${filePath}`;
-                    const writeStream = fs.createWriteStream(uploadPath);
-                    fileStream.pipe(writeStream);
-
-                    await new Promise((resolve, reject) => {
-                        writeStream.on('finish', resolve);
-                        writeStream.on('error', reject); 
-                    })
-
-                    imageUrl = filePath;
-                    console.log(imageUrl);
-                }
-
-                const post = (await Post.create({ ...args, userId: context.user._id, imageUrl }));
+                const post = (await Post.create({ ...args, userId: context.user._id}));
                 await User.findByIdAndUpdate(context.user._id, { $push: { posts: post._id } }, { new: true })
                 return post.populate("userId")
             }
