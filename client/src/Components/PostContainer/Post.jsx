@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
+import LikeBtn from '../LikeButton/LikeBtn';
 
 import './PostStyle.css';
 
@@ -38,6 +39,9 @@ function Post() {
                         </div>
                         <div className="d-flex justify-content-start">
                             <p id="postCreatedAt">{post.createdAt}</p>
+                        </div>
+                        <div className="d-flex justify-content-center">
+                            <LikeBtn postId={post._id} initialLikes={post.likes.length} />
                         </div>
                     </div>
                 </div>
