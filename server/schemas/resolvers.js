@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const { AuthenticationError, signToken } = require('../utils/auth');
 
 const { User, Post, Comment } = require('../models');
@@ -91,7 +93,7 @@ module.exports = {
         }, // Done
         createPost: async (_, args, context) => {
             if (context.user) {
-                const post = (await Post.create({ ...args, userId: context.user._id }));
+                const post = (await Post.create({ ...args, userId: context.user._id}));
                 await User.findByIdAndUpdate(context.user._id, { $push: { posts: post._id } }, { new: true })
                 return post.populate("userId")
             }
@@ -156,8 +158,6 @@ module.exports = {
 
             return { token, user };
         }, // Done
-
-
         deletePost: async (_, { postId }) => {
             console.log('Received postId:', postId); // Log the postId
         
@@ -181,7 +181,6 @@ module.exports = {
                 console.error(err);
                 throw new Error('Failed to delete post.');
             }
-        }        
-
+        }
     }
 } // Done

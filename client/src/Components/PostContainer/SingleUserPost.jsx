@@ -17,9 +17,6 @@ function UserPost() {
         }
     }, [data]);
 
-    console.log("Data.me: ", data.me);
-
-
     if (loading) {
         return <h3>Loading users post....</h3>
     };

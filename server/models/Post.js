@@ -7,7 +7,11 @@ const PostSchema = new Schema({
         type: String,
         maxlength: 180,
     },
-    picture: {
+    file: {
+        type: String,
+        allowNull: true
+    },
+    imageUrl: {
         type: String,
         allowNull: true
     },

@@ -58,7 +58,7 @@ query getAllPosts {
   getAllPosts {
     _id
     text
-    picture
+    file
     createdAt
     userId {
       _id
