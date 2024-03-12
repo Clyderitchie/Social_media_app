@@ -2,8 +2,6 @@ const gql = String.raw;
 
 module.exports = gql`
 
-scalar Upload 
-
     type User {
         _id: ID
         username: String
@@ -19,7 +17,6 @@ scalar Upload
     type Post {
         _id: ID
         text: String
-        file: String
         imageUrl: String
         userId: User
         createdAt: String
@@ -72,7 +69,7 @@ scalar Upload
 
     type Mutation {
         createUser(username: String, password: String, email: String): Auth 
-        createPost(text: String, file: Upload, imageUrl: String): Post 
+        createPost(text: String, imageUrl: String): Post 
         createComment(text: String, postId: ID): Comment 
         createBio(text: String, website: String, location: String, birthday: String): User
         likePost(postId: ID!): Post

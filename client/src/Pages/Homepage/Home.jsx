@@ -9,22 +9,23 @@ import CreatePost from '../../Components/PostContainer/CreatePost'
 import Post from '../../Components/PostContainer/Post';
 import ImagePost from '../../Components/PostContainer/ImagePost';
 import TopTrends from '../../Components/WhatsHappening/TopTrends';
-import PostBtn from '../../Components/PostButton/Post';
+// import PostBtn from '../../Components/PostButton/Post';
 
 
 import './Home.css'
 
 function Home ({ handleLogout, isLoggedIn }) {
     const userId = Auth.getProfile().data._id;
+    console.log("UserId: ", userId); //Returns user id
 
-    const { data } = useQuery(QUERY_ME, { fetchPolicy: 'cache-and-network' });
-
+    const { data } = useQuery(QUERY_ME, );
+    console.log("Data from homepage Query_me: ", data);
     const user = data?.me || {};
     // console.log("Home page user: ", user);
 
     return (
         <>
-        {!Auth.loggedIn() && window.location.replace("/")}
+        {/* {!Auth.loggedIn() && window.location.replace("/")} */}
             <div className="container mt-4">
                 <div className="row">
                     <div id="navSection" className="col-3">

@@ -145,8 +145,6 @@ query Me {
   me {
     _id
     username
-    password
-    email
     bio {
       _id
       text
@@ -158,7 +156,7 @@ query Me {
     posts {
       _id
       text
-      picture
+      imageUrl
       createdAt
       userId {
         username

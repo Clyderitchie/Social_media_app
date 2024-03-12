@@ -7,8 +7,9 @@ import { LIKE_POST } from '../../utils/mutations';
 function LikeBtn({ postId, initialLikes }) {
     const [likes, setLikes] = useState(initialLikes);
     const [liked, setLiked] = useState(false);
-    const [likePost] = useMutation(LIKE_POST, {
-        variables: { postId },
+    const [likePost] = useMutation(LIKE_POST, 
+        // { refetchQueries: ['getAllPosts'] },
+        { variables: { postId },
         onError: (error) => {
             console.error('Error liking post:', error);
         },
