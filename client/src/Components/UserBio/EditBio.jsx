@@ -33,7 +33,7 @@ function EditBio({ userId }) {
             <button type="button" className="btn btn-dark rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Edit Bio
             </button>
-            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -42,7 +42,7 @@ function EditBio({ userId }) {
                         </div>
                         <form action="input" onSubmit={handleSubmit}>
                             <div id="editBioModal" className="modal-body">
-                                <div class="form-floating">
+                                <div className="form-floating">
                                     <textarea className="form-control mb-4 BioInput" 
                                     id="floatingTextarea2"
                                     value={text}
@@ -50,7 +50,7 @@ function EditBio({ userId }) {
                                     ></textarea>
                                     <label for="floatingTextarea2">Text</label>
                                 </div>
-                                <div class="form-floating">
+                                <div className="form-floating">
                                     <textarea className="form-control mb-4 BioInput" 
                                     id="floatingTextarea3"
                                     value={website}
@@ -58,7 +58,7 @@ function EditBio({ userId }) {
                                     ></textarea>
                                     <label for="floatingTextarea3">Website</label>
                                 </div>
-                                <div class="form-floating">
+                                <div className="form-floating">
                                     <textarea className="form-control mb-4 BioInput" 
                                     id="floatingTextarea4"
                                     value={location}
@@ -66,7 +66,7 @@ function EditBio({ userId }) {
                                     ></textarea>
                                     <label for="floatingTextarea4">Location</label>
                                 </div>
-                                <div class="form-floating">
+                                <div className="form-floating">
                                     <textarea className="form-control mb-4 BioInput" 
                                     id="floatingTextarea5"
                                     value={birthday}

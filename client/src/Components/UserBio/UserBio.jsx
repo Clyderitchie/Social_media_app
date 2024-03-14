@@ -4,6 +4,7 @@ import { QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 import EditBio from './EditBio';
+import FollowBtn from '../FollowBtn/FollowBtn';
 
 import './UserBio.css';
 
@@ -20,12 +21,23 @@ function UserBio() {
                 <img src="https://placehold.co/600x200" alt="Profile Header" />
                 <img id="profilePic" className="rounded-circle" src="https://placehold.co/10x10" alt="Profile Picture" />
                 <div className="d-flex justify-content-end">
-                    <EditBio /> 
+                    <EditBio />
                 </div>
                 <div className="card-body">
-                    <h1>{user.username}</h1>
-                    {/* <h6 className='bioData'>{user.bio.text} {user.bio.website}</h6>
-                    <p className='bioData'>{user.bio.location} {user.bio.birthday}</p> */}
+                    <div className="d-flex justify-content-start align-items-center">
+                        <h1 className='bioData'>{user.username}</h1>
+                        <span className='bioData'>
+                            <FollowBtn />
+                        </span>
+                    </div>
+                    {/* <div className="d-flex justify-content-start">
+                        <h6 className='bioData'>{user.bio.text}</h6>
+                        <p className="bioData">{user.bio.website}</p>
+                    </div>
+                    <div className="d-flex justify-content-start">
+                        <p className='bioData'>Location: {user.bio.location}</p>
+                        <p className="bioData">Birthday: {user.bio.birthday}</p>
+                    </div> */}
                     <a className="text-decoration-none text-dark ms-3" href="#">Following</a>
                     <a className="text-decoration-none text-dark ms-5" href="#">Followers</a>
                     <ul className="nav nav-underline mt-4">

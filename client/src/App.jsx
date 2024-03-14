@@ -9,12 +9,14 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import { QUERY_USER } from './utils/queries.js';
+
 import Nav from './Components/NavBar/Nav'
 import Home from './Pages/Homepage/Home.jsx';
 import Login from './Pages/Login/Login.jsx';
 import Profile from './Pages/Profilepage/Profile.jsx';
 import NewPost from './Components/NewPostForm/newPost.jsx';
-import Auth from './utils/auth.js';
+import UserProfile from './Pages/OtherUserProfile/User.jsx';
 
 import './index.css'
 import './App.css'
@@ -39,7 +41,7 @@ const client = new ApolloClient({
 });
 
 function App() {
-
+  // const [userId, setUserId ] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
 
   const handleLogin = () => {
@@ -60,6 +62,7 @@ function App() {
             <Route path='/home' element={<Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} />} />
             <Route path='/' element={<Login handleLogin={handleLogin} />} />
             <Route path='profile' element={<Profile />}/>
+            <Route path='/users/:userId' element={<UserProfile />} />
             <Route path='post' element={<NewPost />} />
           </Routes>
         </Router>

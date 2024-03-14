@@ -9,6 +9,11 @@
     font-weight: bold;
 }
 
+#postCreaterProfile {
+    text-decoration: none;
+    color: black
+}
+
 /* Post text */
 #postText {
     font-size: larger;
