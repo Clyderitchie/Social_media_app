@@ -7,6 +7,7 @@ import Tabs from '../../Components/TabSection/Tabs';
 import TopTrends from '../../Components/WhatsHappening/TopTrends';
 import UserBio from '../../Components/UserBio/UserBio';
 import UserPost from '../../Components/PostContainer/SingleUserPost';
+import FollowBtn from '../../Components/FollowBtn/FollowBtn';
 
 import './Profile.css';
 

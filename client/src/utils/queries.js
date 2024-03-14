@@ -25,7 +25,7 @@ query getUser($userId: ID) {
     profilePicture
     posts {
       text
-      picture
+      imageUrl
       userId {
         username
       }
@@ -58,7 +58,7 @@ query getAllPosts {
   getAllPosts {
     _id
     text
-    file
+    imageUrl
     createdAt
     userId {
       _id

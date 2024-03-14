@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../../utils/queries'
 
 import Auth from '../../utils/auth';
+import LikeBtn from '../LikeButton/LikeBtn';
 
 function UserPost() {
     const userId = Auth.getProfile().data._id;
@@ -23,7 +24,7 @@ function UserPost() {
 
     return (
         <>
-           {data.me.posts.map((post) => (
+           {data.me.posts.toReversed().map((post) => (
             <div className="card mb-4" key={post._id}>
                 <div className="card-body">
                         <div className="d-flex justify-content-start">
@@ -34,6 +35,9 @@ function UserPost() {
                         </div>
                         <div className="d-flex justify-content-start">
                             <p id="postCreatedAt">{post.createdAt}</p>
+                        </div>
+                        <div className="d-flex justify-content-center">
+                            <LikeBtn postId={post._id} initialLikes={post.likes.length} />
                         </div>
                     </div>
             </div>
