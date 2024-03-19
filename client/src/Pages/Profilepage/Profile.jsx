@@ -29,7 +29,6 @@ function Profile() {
                     </div>
                     <div id="contentSection" className="col-6">
                         <UserBio userId={userId}/>
-                        {/* {user.username} */}
                         <UserPost  userId={userId}/>
                     </div>
                     <div id="trendSection" className="col-3">
