@@ -20,13 +20,16 @@ function Home ({ handleLogout, isLoggedIn }) {
     const { data } = useQuery(QUERY_ME, );
     const user = data?.me || {};
 
+    // console.log("Homepage user: ", user);
+    //  Returns logged in users data
+
     return (
         <>
         {!Auth.loggedIn() && window.location.replace("/")}
             <div className="container mt-4">
                 <div className="row">
                     <div id="navSection" className="col-3">
-                        <Tabs logout={handleLogout}/>
+                        <Tabs logout={handleLogout} userId={userId}/>
                     </div>
                     <div id="contentSection" className="col-6">
                         <CreatePost />

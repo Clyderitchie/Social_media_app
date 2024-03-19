@@ -1,30 +1,23 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_ME } from '../../utils/queries'
+import { QUERY_USER } from '../../utils/queries'
 
 import Auth from '../../utils/auth';
 import LikeBtn from '../LikeButton/LikeBtn';
 
 function UserPost() {
-    const userId = Auth.getProfile().data._id;
 
-    const [postContext, setPostContext] = useState([]);
-    const { data, loading } = useQuery(QUERY_ME, { fetchPolicy: 'cache-and-network' });
+    const  { userId } = useParams();
 
-    useEffect(() => {
-        if (data && data.me) {
-            setPostContext(data.me);
-        }
-    }, [data]);
-
-    if (loading) {
-        return <h3>Loading users post....</h3>
-    };
+    const { data } = useQuery(QUERY_USER, { variables: { userId }, fetchPolicy: 'cache-and-network' });
+   
+    const user = data?.getUser || {};
 
     return (
         <>
-           {data.me.posts.toReversed().map((post) => (
+           {user.posts && user.posts.map((post) => (
             <div className="card mb-4" key={post._id}>
                 <div className="card-body">
                         <div className="d-flex justify-content-start">
