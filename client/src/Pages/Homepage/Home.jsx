@@ -15,13 +15,12 @@ import TopTrends from '../../Components/WhatsHappening/TopTrends';
 import './Home.css'
 
 function Home ({ handleLogout, isLoggedIn }) {
+    
     const userId = Auth.getProfile().data._id;
 
     const { data } = useQuery(QUERY_ME, );
-    const user = data?.me || {};
 
-    // console.log("Homepage user: ", user);
-    //  Returns logged in users data
+    const user = data?.me || {};
 
     return (
         <>
