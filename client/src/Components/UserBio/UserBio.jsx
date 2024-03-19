@@ -31,10 +31,10 @@ function UserBio() {
                     <div className="d-flex justify-content-start align-items-center">
                         <h1 className='bioData'>{user.username}</h1>
                         <span className='bioData'>
-                            <FollowBtn />
+                            {!!!isCurrentUser && <FollowBtn />}
                         </span>
                     </div>
-                    <a className="text-decoration-none text-dark ms-3" href="#">Following</a>
+                    <a className="text-decoration-none text-dark ms-3" href="">Following</a>
                     <a className="text-decoration-none text-dark ms-5" href="#">Followers</a>
                     <ul className="nav nav-underline mt-4">
                         <li className="nav-item ProfileTabs">
