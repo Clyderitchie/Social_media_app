@@ -1,6 +1,7 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_ME } from '../../utils/queries';
+import { QUERY_USER } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 import Tabs from '../../Components/TabSection/Tabs';
@@ -12,11 +13,12 @@ import FollowBtn from '../../Components/FollowBtn/FollowBtn';
 import './Profile.css';
 
 function Profile() {
-    const userId = Auth.getProfile().data._id;
+   
+    const  { userId } = useParams();
 
-    const { data } = useQuery(QUERY_ME, { fetchPolicy: 'cache-and-network' });
+    const { data } = useQuery(QUERY_USER, { variables: { userId }, fetchPolicy: 'cache-and-network' });
 
-    const user = data?.me || {};
+    const user = data?.getUser || {};
 
     return (
         <>
@@ -26,8 +28,9 @@ function Profile() {
                         <Tabs />
                     </div>
                     <div id="contentSection" className="col-6">
-                        <UserBio />
-                        <UserPost  />
+                        <UserBio userId={userId}/>
+                        {/* {user.username} */}
+                        <UserPost  userId={userId}/>
                     </div>
                     <div id="trendSection" className="col-3">
                         <TopTrends />

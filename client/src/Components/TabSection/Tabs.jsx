@@ -8,8 +8,10 @@ import ActiveUser from '../AciveUser/ActiveUser';
 
 import'./Tabs.css';
 
-function Tabs(props) {
-    const { logout } = props;
+function Tabs({ logout, userId}) {
+    // console.log("Tabs userId: ", userId);
+    //  Passing the userId onto the profile Link correctly. This was done by passing userId as a 
+    // Prop from the homepage where Tabs component is being called. 
 
     return (
         <TabGroup links={[
@@ -25,7 +27,7 @@ function Tabs(props) {
             <Link key={4} className='text-decoration-none text-dark'>
                 <li className='tabList'>Messages</li>
             </Link>,
-            <Link key={5} className='text-decoration-none text-dark' to='/profile'>
+            <Link key={5} className='text-decoration-none text-dark' to={`/profile/${userId}`}>
                <li className='tabList'>Profile</li>
             </Link>,
             <Link key={6} className='text-decoration-none text-dark' to="/" onClick={logout}>
@@ -34,7 +36,7 @@ function Tabs(props) {
             <Link key={7} className='postBtn' state= {{userId: Auth.getProfile().data._id}} >
                 {/* <PostBtn /> */}
             </Link>,
-            <ActiveUser />
+            <ActiveUser key={8}/>
         ]} />
     )
 };

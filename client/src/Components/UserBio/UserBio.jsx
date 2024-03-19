@@ -1,6 +1,7 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_ME } from '../../utils/queries';
+import { QUERY_USER } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 import EditBio from './EditBio';
@@ -9,11 +10,20 @@ import FollowBtn from '../FollowBtn/FollowBtn';
 import './UserBio.css';
 
 function UserBio() {
-    const userId = Auth.getProfile().data._id;
+    // const userId = Auth.getProfile().data._id;
 
-    const { data } = useQuery(QUERY_ME, { fetchPolicy: "cache-and-network" });
+    const  { userId } = useParams();
 
-    const user = data?.me || {};
+
+    const { data } = useQuery(QUERY_USER, { variables: { userId }, fetchPolicy: "cache-and-network" });
+
+    const user = data?.getUser || {};
+    console.log("UserBio user: ", user);
+
+    // Passing userId as a prop from PROFILE and using QUERY_USER 
+    // I am returning the correct data for username
+
+    // TODO: Fix the bio issue with not reading text, location, website, and birthday
 
     return (
         <>
@@ -30,14 +40,15 @@ function UserBio() {
                             <FollowBtn />
                         </span>
                     </div>
-                    {/* <div className="d-flex justify-content-start">
-                        <h6 className='bioData'>{user.bio.text}</h6>
-                        <p className="bioData">{user.bio.website}</p>
+                    <div className="d-flex justify-content-start">
+                        {/* {user.bio.text} */}
+                        {/* <h6 className='bioData'>{user.bio.text}</h6>
+                        <p className="bioData">{user.bio.website}</p> */}
                     </div>
                     <div className="d-flex justify-content-start">
-                        <p className='bioData'>Location: {user.bio.location}</p>
-                        <p className="bioData">Birthday: {user.bio.birthday}</p>
-                    </div> */}
+                        {/* <p className='bioData'>Location: {user.bio.location}</p>
+                        <p className="bioData">Birthday: {user.bio.birthday}</p> */}
+                    </div>
                     <a className="text-decoration-none text-dark ms-3" href="#">Following</a>
                     <a className="text-decoration-none text-dark ms-5" href="#">Followers</a>
                     <ul className="nav nav-underline mt-4">

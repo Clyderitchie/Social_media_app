@@ -14,7 +14,7 @@ import { QUERY_USER } from './utils/queries.js';
 import Nav from './Components/NavBar/Nav'
 import Home from './Pages/Homepage/Home.jsx';
 import Login from './Pages/Login/Login.jsx';
-import Profile from './Pages/Profilepage/Profile.jsx';
+import Profile from './Pages/ProfilePage/Profile.jsx';
 import NewPost from './Components/NewPostForm/newPost.jsx';
 import UserProfile from './Pages/OtherUserProfile/User.jsx';
 
@@ -61,7 +61,7 @@ function App() {
           <Routes>
             <Route path='/home' element={<Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} />} />
             <Route path='/' element={<Login handleLogin={handleLogin} />} />
-            <Route path='profile' element={<Profile />}/>
+            <Route path='profile/:userId' element={<Profile />}/>
             <Route path='/users/:userId' element={<UserProfile />} />
             <Route path='post' element={<NewPost />} />
           </Routes>
