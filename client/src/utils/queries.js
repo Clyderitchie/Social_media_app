@@ -87,7 +87,7 @@ query getPost($postId: ID) {
   getPost(postId: $postId) {
     _id
     text
-    picture
+    imageUrl
     userId {
       username
     }
