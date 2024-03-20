@@ -5,6 +5,7 @@ import { QUERY_POSTS, QUERY_USER } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 import LikeBtn from '../LikeButton/LikeBtn';
+import Comment from '../Coments/Comment';
 
 import './PostStyle.css';
 
@@ -19,6 +20,8 @@ function Post({ creatorId }) {
             setPostsData(data.getAllPosts);
         }
     }, [data]);
+
+    // console.log("All post: ", data);
 
     if (loading) {
         return <h3>Loading posts...</h3>
@@ -47,8 +50,13 @@ function Post({ creatorId }) {
                         <div className="d-flex justify-content-start">
                             <p id="postCreatedAt">{post.createdAt}</p>
                         </div>
-                        <div className="d-flex justify-content-center">
-                            <LikeBtn postId={post._id} initialLikes={post.likes.length} />
+                        <div className="d-flex justify-content-around">
+                            <div>
+                                <LikeBtn postId={post._id} initialLikes={post.likes.length} />
+                            </div>
+                            <div>
+                                <Comment postId={post._id}/>
+                            </div>
                         </div>
                     </div>
                 </div>
