@@ -90,29 +90,3 @@ function CreatePost() {
 };
 
 export default CreatePost;
-
- // const cloudName = 'dotzqy61r';
-        // const formData = new FormData();
-        // formData.set('file', file);
-        // formData.set('upload_preset', 'dgayr62l');
-        // formData.set('api_key', '443559482432498');
-        // const cloudinaryResponse = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-        //     method: 'POST',
-        //     body: formData
-        // });
-
-        // if (cloudinaryResponse.ok) {
-        //     const CloudinaryData = await cloudinaryResponse.json();
-        //     console.log(CloudinaryData);
-        //     try {
-        //         const { data } = await addPost({
-        //             variables: { text, imageUrl: CloudinaryData.url }
-        //         });
-        //         console.log("New post: ", data);
-        //         setText('');
-        //         setFile(null);
-        //         navigate('/home');
-        //     } catch (err) {
-        //         console.log("Create Post Error: ", err);
-        //     }
-        // }

@@ -42,7 +42,7 @@ function Post({ creatorId }) {
                         <div className="d-flex justify-content-center">
                             <p id="postText">{post.text}</p>
                         </div>
-                        {post.imageUrl && ( // Conditionally render image if imageUrl exists
+                        {post.imageUrl && (
                             <div className="d-flex justify-content-center">
                                 <img src={post.imageUrl} alt="Post" style={{ maxWidth: '100%', height: 'auto' }} />
                             </div>
