@@ -11,11 +11,12 @@ mutation CreateUser($username: String, $password: String, $email: String) {
 
 // Bio
 export const CREATE_BIO = gql`
-mutation createBio($text: String, $website: String, $location: String, $birthday: String) {
-  createBio(text: $text, website: $website, location: $location, birthday: $birthday) {
+mutation createBio($text: String, $profilePicture: String, $website: String, $location: String, $birthday: String) {
+  createBio(text: $text, profilePicture: $profilePicture, website: $website, location: $location, birthday: $birthday) {
     bio {
       _id
       text
+      profilePicture
       location
       website
       birthday
