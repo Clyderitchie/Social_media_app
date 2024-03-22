@@ -18,12 +18,14 @@ function UserBio() {
 
     const user = data?.getUser || {};
     const isCurrentUser = loggedInUserId === profileUserId;
+
+    console.log('User bio: ', data);
     
     return (
         <>
             <div className="card">
                 <img src="https://placehold.co/600x200" alt="Profile Header" />
-                <img id="profilePic" className="rounded-circle" src="https://placehold.co/10x10" alt="Profile Picture" />
+                <img id="profilePic" className="rounded-circle" src={user.bio.profilePicture} alt="Profile Picture" />
                 <div className="d-flex justify-content-end">
                    {isCurrentUser &&  <EditBio />}
                 </div>

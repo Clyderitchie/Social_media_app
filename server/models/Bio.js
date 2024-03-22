@@ -7,6 +7,10 @@ const BioSchema = new Schema(
             type: String,
             maxlength: 60,
         },
+        profilePicture: {
+            type: String,
+            allowNull: true
+        },
         location: {
             type: String
         },
