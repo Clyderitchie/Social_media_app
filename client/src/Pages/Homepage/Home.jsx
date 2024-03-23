@@ -7,7 +7,6 @@ import Auth from '../../utils/auth';
 import Tabs from '../../Components/TabSection/Tabs';
 import CreatePost from '../../Components/PostContainer/CreatePost'
 import Post from '../../Components/PostContainer/Post';
-import ImagePost from '../../Components/PostContainer/ImagePost';
 import TopTrends from '../../Components/WhatsHappening/TopTrends';
 // import PostBtn from '../../Components/PostButton/Post';
 
@@ -22,6 +21,9 @@ function Home ({ handleLogout, isLoggedIn }) {
 
     const user = data?.me || {};
 
+    // console.log("Homepage user: ", user);
+    // UserId of Clyde: We want this to be passed as a prop to Tabs Component 65d5728d69644ad849e4b7d1
+
     return (
         <>
         {!Auth.loggedIn() && window.location.replace("/")}
@@ -32,7 +34,7 @@ function Home ({ handleLogout, isLoggedIn }) {
                     </div>
                     <div id="contentSection" className="col-6">
                         <CreatePost />
-                        <Post />
+                        <Post userId={userId}/>
                     </div>
                     <div id="trendSection" className="col-3">
                         <TopTrends />
