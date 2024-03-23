@@ -8,7 +8,6 @@ module.exports = gql`
         password: String
         email: String
         bio: Bio
-        profilePicture: String
         posts: [Post]
         followers: [User]
         following: [User]
@@ -47,6 +46,7 @@ module.exports = gql`
     type Bio {
         _id: ID
         text: String
+        profilePicture: String
         location: String
         website: String
         birthday: String
@@ -71,7 +71,7 @@ module.exports = gql`
         createUser(username: String, password: String, email: String): Auth 
         createPost(text: String, imageUrl: String): Post 
         createComment(text: String, postId: ID): Comment 
-        createBio(text: String, website: String, location: String, birthday: String): User
+        createBio(text: String,  profilePicture: String, website: String, location: String, birthday: String): User
         likePost(postId: ID!): Post
         likeComment(commentId: ID!): Comment
         followUser(userId: ID!): User
