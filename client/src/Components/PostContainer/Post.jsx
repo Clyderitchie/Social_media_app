@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS, QUERY_USER } from '../../utils/queries';
 
@@ -9,10 +10,11 @@ import Comment from '../Coments/Comment';
 
 import './PostStyle.css';
 
-function Post({ creatorId }) {
-    const userId = Auth.getProfile().data._id;
+function Post({ userId }) {
 
+    const location = useLocation();
     const [postsData, setPostsData] = useState([]);
+    const loggedInUserId = Auth.getProfile().data._id;
     const { data, loading } = useQuery(QUERY_POSTS, { fetchPolicy: 'cache-and-network' });
 
     useEffect(() => {
@@ -21,11 +23,9 @@ function Post({ creatorId }) {
         }
     }, [data]);
 
-    // console.log("All post: ", data);
-
     if (loading) {
-        return <h3>Loading posts...</h3>
-    };
+        return <h3>Loading posts...</h3>;
+    }
 
     return (
         <>
@@ -33,10 +33,13 @@ function Post({ creatorId }) {
                 <div id="postBody" className="card mb-4" key={post._id}>
                     <div className="card-body">
                         <div className="d-flex justify-content-start">
-                            <h6 id="postCreator">@
-                                <a id="postCreaterProfile" href={`/users/${post.userId._id}`}>
+                            <h6 id="postCreator">
+                                @<Link to={post.userId._id ===
+                                    loggedInUserId ? '/profile' :
+                                    `/user/${post.userId._id}`}
+                                    state={{ postUserId: post.userId._id }}>
                                     {post.userId.username}
-                                </a>
+                                </Link>
                             </h6>
                         </div>
                         <div className="d-flex justify-content-center">
@@ -44,7 +47,9 @@ function Post({ creatorId }) {
                         </div>
                         {post.imageUrl && (
                             <div className="d-flex justify-content-center">
-                                <img src={post.imageUrl} alt="Post" style={{ maxWidth: '100%', height: 'auto' }} />
+                                <img src={post.imageUrl}
+                                    alt="Post"
+                                    style={{ maxWidth: '100%', height: 'auto' }} />
                             </div>
                         )}
                         <div className="d-flex justify-content-start">
@@ -55,7 +60,7 @@ function Post({ creatorId }) {
                                 <LikeBtn postId={post._id} initialLikes={post.likes.length} />
                             </div>
                             <div>
-                                <Comment postId={post._id}/>
+                                <Comment postId={post._id} />
                             </div>
                         </div>
                     </div>

@@ -6,9 +6,9 @@ import { QUERY_USER } from '../../utils/queries'
 import Auth from '../../utils/auth';
 import LikeBtn from '../LikeButton/LikeBtn';
 
-function UserPost() {
+function UserPost({ userId }) {
 
-    const  { userId } = useParams();
+    // console.log('Single user post: ', userId);
 
     const { data } = useQuery(QUERY_USER, { variables: { userId }, fetchPolicy: 'cache-and-network' });
    

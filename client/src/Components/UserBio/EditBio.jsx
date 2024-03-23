@@ -14,7 +14,7 @@ function EditBio({ userId }) {
     const [website, setWebsite] = useState('');
     const [birthday, setBirthday] = useState('');
 
-    const [addBio, { error }] = useMutation(CREATE_BIO);
+    const [addBio] = useMutation(CREATE_BIO);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

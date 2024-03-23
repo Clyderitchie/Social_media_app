@@ -1,7 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries';
+
+import { useLocation } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 import EditBio from './EditBio';
@@ -9,15 +10,23 @@ import FollowBtn from '../FollowBtn/FollowBtn';
 
 import './UserBio.css';
 
-function UserBio() {
+function UserBio({ userId }) {
 
-    const  { userId: profileUserId } = useParams();
+    console.log("UserBio: ", userId)
     const loggedInUserId = Auth.getProfile().data._id;
 
-    const { data } = useQuery(QUERY_USER, { variables: { userId: profileUserId }, fetchPolicy: "cache-and-network" });
+    const { data } = useQuery(QUERY_USER, { variables: { userId }, fetchPolicy: "cache-and-network" });
 
     const user = data?.getUser || {};
-    const isCurrentUser = loggedInUserId === profileUserId;
+
+    const location = useLocation();
+
+    const isCurrentUser = loggedInUserId === userId;
+
+    const isProfileRoute = location.pathname === '/profile';
+
+    // console.log("UserBio user: ", data);
+
     
     return (
         <>
@@ -25,13 +34,13 @@ function UserBio() {
                 <img src="https://placehold.co/600x200" alt="Profile Header" />
                 <img id="profilePic" className="rounded-circle" src="https://placehold.co/10x10" alt="Profile Picture" />
                 <div className="d-flex justify-content-end">
-                   {isCurrentUser &&  <EditBio />}
+                   {isCurrentUser && isProfileRoute &&  <EditBio />}
                 </div>
                 <div className="card-body">
                     <div className="d-flex justify-content-start align-items-center">
                         <h1 className='bioData'>{user.username}</h1>
                         <span className='bioData'>
-                            {!!!isCurrentUser && <FollowBtn />}
+                            {!!!isCurrentUser && isProfileRoute && <FollowBtn />}
                         </span>
                     </div>
                     <a className="text-decoration-none text-dark ms-3" href="">Following</a>

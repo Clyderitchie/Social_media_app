@@ -61,8 +61,8 @@ function App() {
           <Routes>
             <Route path='/home' element={<Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} />} />
             <Route path='/' element={<Login handleLogin={handleLogin} />} />
-            <Route path='profile/:userId' element={<Profile />}/>
-            <Route path='/users/:userId' element={<UserProfile />} />
+            <Route path='profile' element={<Profile />}/>
+            <Route path='/user/:userId' element={<UserProfile />} />
             <Route path='post' element={<NewPost />} />
           </Routes>
         </Router>

@@ -1,17 +1,17 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 import TabGroup from './Tabgroup';
 import PostBtn from '../PostButton/Post';
 import ActiveUser from '../AciveUser/ActiveUser';
-// import More from '../MoreSection/MoreBtn';
+
 
 import'./Tabs.css';
 
 function Tabs({ logout, userId}) {
+
     // console.log("Tabs userId: ", userId);
-    //  Passing the userId onto the profile Link correctly. This was done by passing userId as a 
-    // Prop from the homepage where Tabs component is being called. 
 
     return (
         <TabGroup links={[
@@ -27,7 +27,7 @@ function Tabs({ logout, userId}) {
             <Link key={4} className='text-decoration-none text-dark'>
                 <li className='tabList'>Messages</li>
             </Link>,
-            <Link key={5} className='text-decoration-none text-dark' to={`/profile/${userId}`}>
+            <Link key={5} className='text-decoration-none text-dark' to='/profile' state= {{userId: Auth.getProfile().data._id}}>
                <li className='tabList'>Profile</li>
             </Link>,
             <Link key={6} className='text-decoration-none text-dark' to="/" onClick={logout}>
