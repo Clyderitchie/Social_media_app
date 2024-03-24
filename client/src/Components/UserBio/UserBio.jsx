@@ -32,7 +32,7 @@ function UserBio({ userId }) {
         <>
             <div className="card">
                 <img src="https://placehold.co/600x200" alt="Profile Header" />
-                <img id="profilePic" className="rounded-circle" src={user.bio.profilePicture} alt="Profile Picture" />
+                {/* <img id="profilePic" className="rounded-circle" src={user.bio.profilePicture} alt="Profile Picture" /> */}
                 <div className="d-flex justify-content-end">
                    {isCurrentUser && isProfileRoute &&  <EditBio />}
                 </div>
