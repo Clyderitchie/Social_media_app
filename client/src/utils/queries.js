@@ -18,11 +18,11 @@ query getUser($userId: ID) {
     bio {
       _id
       text
+      profilePicture
       location
       website
       birthday
     }
-    profilePicture
     posts {
       text
       imageUrl
@@ -148,11 +148,11 @@ query Me {
     bio {
       _id
       text
+      profilePicture
       location
       website
       birthday
     }
-    profilePicture
     posts {
       _id
       text
