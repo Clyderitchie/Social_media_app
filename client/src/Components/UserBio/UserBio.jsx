@@ -12,22 +12,18 @@ import './UserBio.css';
 
 function UserBio({ userId }) {
 
-    console.log("UserBio: ", userId)
     const loggedInUserId = Auth.getProfile().data._id;
 
     const { data } = useQuery(QUERY_USER, { variables: { userId }, fetchPolicy: "cache-and-network" });
 
     const user = data?.getUser || {};
-
+    
     const location = useLocation();
 
     const isCurrentUser = loggedInUserId === userId;
 
     const isProfileRoute = location.pathname === '/profile';
 
-    // console.log("UserBio user: ", data);
-
-    
     return (
         <>
             <div className="card">
@@ -42,6 +38,9 @@ function UserBio({ userId }) {
                         <span className='bioData'>
                             {!!!isCurrentUser && isProfileRoute && <FollowBtn />}
                         </span>
+                    </div>
+                    <div className="card-body">
+                    <h6>{user.bio ? user.bio.text : 'Bio not available'}</h6>
                     </div>
                     <a className="text-decoration-none text-dark ms-3" href="">Following</a>
                     <a className="text-decoration-none text-dark ms-5" href="#">Followers</a>

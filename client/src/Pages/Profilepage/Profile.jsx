@@ -1,7 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries';
-import { QUERY_ME } from '../../utils/queries';
 
 import { useLocation } from 'react-router-dom'
 
@@ -13,18 +12,17 @@ import UserPost from '../../Components/PostContainer/SingleUserPost';
 
 import './Profile.css';
 
-function Profile({ userId, otherProfileUserId }) {
+function Profile({ userId, otherProfileUserId, activeUserId }) {
 
     const location = useLocation();
     const { state } = location;
     
-    console.log("Profile received userId: ", userId);
-    console.log("Profile received otherProfileUserId coming from UserProfile Component: ", otherProfileUserId);
-    console.log("state from location Profile: ", state)
 
-    const profileUserId = userId || otherProfileUserId || state?.userId;
+    console.log("Profile received activeUserId coming from Post Component: ", activeUserId);
 
-
+    const profileUserId =
+        otherProfileUserId || activeUserId || state?.userId;
+        
     const { data } = useQuery(QUERY_USER,
         {
             variables: { userId: profileUserId },
@@ -32,8 +30,7 @@ function Profile({ userId, otherProfileUserId }) {
         });
 
     const user = data?.getUser || {};
-    console.log("Profile user data: ", data);
-
+    
     return (
         <>
             <div className="container mt-4">
