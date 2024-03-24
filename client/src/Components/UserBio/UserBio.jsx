@@ -19,6 +19,7 @@ function UserBio({ userId }) {
     const user = data?.getUser || {};
 
 
+
     const location = useLocation();
 
     const isCurrentUser = loggedInUserId === userId;
@@ -26,7 +27,6 @@ function UserBio({ userId }) {
     const isProfileRoute = location.pathname === '/profile';
 
     // console.log("UserBio user: ", data);
-
     
     return (
         <>
