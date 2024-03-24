@@ -35,9 +35,14 @@ function Post({ userId }) {
                         <div className="d-flex justify-content-start">
                             <h6 id="postCreator">
                                 @<Link to={post.userId._id ===
-                                    loggedInUserId ? '/profile' :
+                                    loggedInUserId ?
+                                    {
+                                        pathname: `/user/${post.userId._id}`,
+                                        state: { activeUserId: post.userId._id }
+                                    } :
                                     `/user/${post.userId._id}`}
-                                    state={{ postUserId: post.userId._id }}>
+                                    state={{ postUserId: post.userId._id }}
+                                    onClick={() => console.log("Active User ID:", post.userId._id)}>
                                     {post.userId.username}
                                 </Link>
                             </h6>
