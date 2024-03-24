@@ -13,9 +13,6 @@ function UserProfile() {
     const { state } = location;
     const otherUserId = state?.postUserId;
 
-    console.log("UserId from UserProfile: ", otherUserId);
-    console.log("state from location UserProfile: ", state)
-
     const { data } = useQuery(QUERY_USER,
         {
             variables: { userId: otherUserId },

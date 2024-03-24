@@ -21,8 +21,6 @@ function Home ({ handleLogout, isLoggedIn }) {
 
     const user = data?.me || {};
 
-    // console.log("Homepage user: ", user);
-    // UserId of Clyde: We want this to be passed as a prop to Tabs Component 65d5728d69644ad849e4b7d1
 
     return (
         <>

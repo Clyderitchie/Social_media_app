@@ -4,34 +4,41 @@ import { useMutation } from '@apollo/client';
 import { useQuery } from '@apollo/client';
 
 import { QUERY_ME } from '../../utils/queries';
-import { FOLLOW_USER } from '../../utils/mutations';
+import { FOLLOW_USER, UNFOLLOW_USER} from '../../utils/mutations';
 
-function FollowBtn({ userIdToFollow }) {
+function FollowBtn({ userId }) {
     const [followUser] = useMutation(FOLLOW_USER);
-    const { data: userData } = useQuery(QUERY_ME);
+    const [unfollowUser] = useMutation(UNFOLLOW_USER);
+    const { data: meData } = useQuery(QUERY_ME);
 
     const handleFollow = async () => {
         try {
-            // Execute the FOLLOW_USER mutation
-            const { data } = await followUser({
-                variables: { userId: userIdToFollow }
-            });
-
-            // Update local state or perform any other actions as needed
-            console.log("User followed:", data.followUser.username);
+            await followUser({ variables: { userId } });
         } catch (error) {
-            console.error("Failed to follow user:", error);
+            console.error('Error following user:', error);
         }
     };
 
+    const handleUnfollow = async () => {
+        try {
+            await unfollowUser({ variables: { userId } });
+        } catch (error) {
+            console.error('Error unfollowing user:', error);
+        }
+    };
+
+    if (!meData || !meData.me || !meData.me.following) {
+        return null; // Loading or error state
+    }
+
+    const isFollowing = meData.me.following.includes(userId);
+    console.log("Follow Btn: ", isFollowing)
 
     return (
-        <>
-        <button type='button' className='btn btn-dark' onClick={handleFollow}>
-            Follow
+        <button type='button' className='btn btn-dark' onClick={isFollowing ? handleUnfollow : handleFollow}>
+            {isFollowing ? 'Unfollow' : 'Follow'}
         </button>
-        </>
-    )
+    );
 };
 
 export default FollowBtn;

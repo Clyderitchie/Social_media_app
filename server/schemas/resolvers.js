@@ -93,7 +93,7 @@ module.exports = {
         }, // Done
         createPost: async (_, args, context) => {
             if (context.user) {
-                const post = (await Post.create({ ...args, userId: context.user._id}));
+                const post = (await Post.create({ ...args, userId: context.user._id }));
                 await User.findByIdAndUpdate(context.user._id, { $push: { posts: post._id } }, { new: true })
                 return post.populate("userId")
             }
@@ -141,6 +141,27 @@ module.exports = {
             }
             throw AuthenticationError
         }, // Done
+        unFollowUser: async (parent, { userId }, context) => {
+            const { user } = context;
+            if (!user) {
+                throw new AuthenticationError('You must be logged in to perform this action');
+            }
+            try {
+                const currentUser = await User.findById(user._id);
+                const userToUnfollow = await User.findById(userId);
+                if (!userToUnfollow) {
+                    throw new UserInputError('User to unfollow not found');
+                }
+                currentUser.following = currentUser
+                    .following
+                    .filter(followedUser => followedUser._id.toString() !== userId);
+                await currentUser.save();
+                return currentUser;
+            } catch (error) {
+                console.error('Error unfollowing user:', error);
+                throw new ApolloError('Failed to unfollow user');
+            }
+        },
         login: async (_, { email, password }) => {
             const user = await User.findOne({ email });
 
@@ -160,22 +181,22 @@ module.exports = {
         }, // Done
         deletePost: async (_, { postId }) => {
             console.log('Received postId:', postId); // Log the postId
-        
+
             try {
                 // Check if the post exists
                 const post = await Post.findById(postId);
-        
+
                 // If the post doesn't exist, throw an error
                 if (!post) {
                     throw new Error('Post not found.');
                 }
-        
+
                 // Delete the post by ID
                 const deletedPost = await Post.findByIdAndDelete(postId);
-        
+
                 // Delete associated comments
                 await Comment.deleteMany({ _id: { $in: deletedPost.comments } });
-        
+
                 return true; // Return true to indicate successful deletion
             } catch (err) {
                 console.error(err);
@@ -183,4 +204,5 @@ module.exports = {
             }
         }
     }
-} // Done
+}
+
