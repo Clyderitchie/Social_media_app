@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries';
+import { FOLLOW_USER } from '../../utils/mutations';
 
 import { useLocation } from 'react-router-dom';
 
@@ -14,40 +16,62 @@ function UserBio({ userId }) {
 
     const loggedInUserId = Auth.getProfile().data._id;
 
+    const [followedUsers, setFollowedUsers] = useState([]);
     const { data } = useQuery(QUERY_USER, { variables: { userId }, fetchPolicy: "cache-and-network" });
-
     const user = data?.getUser || {};
 
-
+    useEffect(() => {
+        // Update followed users when component mounts or userId changes
+        if (user.following) {
+            setFollowedUsers(user.following);
+        }
+    }, [userId, user.following]);
 
     const location = useLocation();
-
     const isCurrentUser = loggedInUserId === userId;
 
-    const isProfileRoute = location.pathname === '/profile';
+    const [followUser] = useMutation(FOLLOW_USER, {
+        update(cache, { data: { followUser } }) {
+            // Update followed users state
+            setFollowedUsers([...followedUsers, followUser]);
+        }
+    });
 
-    // console.log("UserBio user: ", data);
-    
+    const handleFollow = async () => {
+        try {
+            const { data } = await followUser({ variables: { userId } });
+            console.log('Followed user:', data.followUser);
+        } catch (error) {
+            console.error('Error following user:', error);
+        }
+    };
+
     return (
         <>
             <div className="card">
                 <img src="https://placehold.co/600x200" alt="Profile Header" />
                 {/* <img id="profilePic" className="rounded-circle" src={user.bio.profilePicture} alt="Profile Picture" /> */}
                 <div className="d-flex justify-content-end">
-                   {isCurrentUser && isProfileRoute &&  <EditBio />}
+                    {isCurrentUser && <EditBio />}
                 </div>
                 <div className="card-body">
                     <div className="d-flex justify-content-start align-items-center">
                         <h1 className='bioData'>{user.username}</h1>
                         <span className='bioData'>
-                            {!!!isCurrentUser && isProfileRoute && <FollowBtn />}
+                            {!!!isCurrentUser && <FollowBtn userId={userId} loggedInUserId={loggedInUserId} onFollow={handleFollow} />}
                         </span>
                     </div>
                     <div className="card-body">
-                    <h6>{user.bio ? user.bio.text : 'Bio not available'}</h6>
+                        <h6>{user.bio ? user.bio.text : 'Bio not available'}</h6>
                     </div>
-                    <a className="text-decoration-none text-dark ms-3" href="">Following</a>
-                    <a className="text-decoration-none text-dark ms-5" href="#">Followers</a>
+                    <a className="text-decoration-none text-dark ms-3" href="">
+                        Following
+                        ({followedUsers.length})
+                    </a>
+                    <a className="text-decoration-none text-dark ms-5" href="#">
+                        Followers
+                        ({user.followers ? user.followers.length : 0})
+                    </a>
                     <ul className="nav nav-underline mt-4">
                         <li className="nav-item ProfileTabs">
                             <a href="#" aria-current="page" className="nav-link text-dark">Posts</a>

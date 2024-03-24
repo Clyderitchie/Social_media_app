@@ -11,8 +11,6 @@ import'./Tabs.css';
 
 function Tabs({ logout, userId}) {
 
-    // console.log("Tabs userId: ", userId);
-
     return (
         <TabGroup links={[
             <Link key={1} id="tabGroup" className='text-decoration-none text-dark' to="/home" state= {{userId: Auth.getProfile().data._id}}>

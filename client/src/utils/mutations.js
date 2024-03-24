@@ -75,6 +75,15 @@ mutation followUser($userId: ID!) {
 }
 `; // Good
 
+export const UNFOLLOW_USER = gql`
+mutation unFollowUser($userId: ID!) {
+  unFollowUser(userId: $userId) {
+    _id
+    username
+  }
+}
+`;
+
 // Login
 export const LOGIN = gql`
 mutation login($email: String!, $password: String!) {
