@@ -70,6 +70,7 @@ mutation likeComment($commentId: ID!) {
 export const FOLLOW_USER = gql`
 mutation followUser($userId: ID!) {
   followUser(userId: $userId) {
+    _id
     username
   }
 }

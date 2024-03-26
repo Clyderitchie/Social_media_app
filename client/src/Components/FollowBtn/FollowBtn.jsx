@@ -1,19 +1,35 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { useQuery } from '@apollo/client';
 
 import { QUERY_ME } from '../../utils/queries';
-import { FOLLOW_USER, UNFOLLOW_USER} from '../../utils/mutations';
+import { FOLLOW_USER, UNFOLLOW_USER } from '../../utils/mutations';
 
 function FollowBtn({ userId }) {
+    const [isFollowing, setIsFollowing] = useState(false);
+    const { data: meData, loading, error } = useQuery(QUERY_ME);
+
     const [followUser] = useMutation(FOLLOW_USER);
     const [unfollowUser] = useMutation(UNFOLLOW_USER);
-    const { data: meData } = useQuery(QUERY_ME);
+
+    useEffect(() => {
+        console.log('meData:', meData);
+        if (!loading && !error && meData && meData.me && meData.me.following) {
+            console.log('Following:', meData.me.following);
+            setIsFollowing(meData.me.following.some(user => user._id === userId));
+            if (meData.me.following.some(user => user._id === userId)) {
+                console.log(`Is following user with ID ${userId}`);
+            } else {
+                console.log(`Is not following user with ID ${userId}`);
+            }
+        }
+    }, [meData, userId, loading, error]);
 
     const handleFollow = async () => {
         try {
             await followUser({ variables: { userId } });
+            setIsFollowing(true);
         } catch (error) {
             console.error('Error following user:', error);
         }
@@ -22,23 +38,29 @@ function FollowBtn({ userId }) {
     const handleUnfollow = async () => {
         try {
             await unfollowUser({ variables: { userId } });
+            setIsFollowing(false);
         } catch (error) {
             console.error('Error unfollowing user:', error);
         }
     };
 
-    if (!meData || !meData.me || !meData.me.following) {
-        return null; // Loading or error state
-    }
-
-    const isFollowing = meData.me.following.includes(userId);
-    console.log("Follow Btn: ", isFollowing)
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
 
     return (
-        <button type='button' className='btn btn-dark' onClick={isFollowing ? handleUnfollow : handleFollow}>
-            {isFollowing ? 'Unfollow' : 'Follow'}
-        </button>
+        <>
+            {isFollowing ? (
+                <button className="btn btn-dark" onClick={handleUnfollow}>
+                    Unfollow
+                </button>
+            ) : (
+                <button className="btn btn-dark" onClick={handleFollow}>
+                    Follow
+                </button>
+            )}
+
+        </>
     );
-};
+}
 
 export default FollowBtn;

@@ -42,7 +42,7 @@ function Post({ userId }) {
                                     } :
                                     `/user/${post.userId._id}`}
                                     state={{ postUserId: post.userId._id }}
-                                    onClick={() => console.log("Active User ID:", post.userId._id)}>
+                                    >
                                     {post.userId.username}
                                 </Link>
                             </h6>

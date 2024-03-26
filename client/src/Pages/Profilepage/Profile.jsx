@@ -17,9 +17,6 @@ function Profile({ userId, otherProfileUserId, activeUserId }) {
     const location = useLocation();
     const { state } = location;
     
-
-    console.log("Profile received activeUserId coming from Post Component: ", activeUserId);
-
     const profileUserId =
         otherProfileUserId || activeUserId || state?.userId;
         

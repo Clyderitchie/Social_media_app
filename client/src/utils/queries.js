@@ -43,9 +43,11 @@ query getUser($userId: ID) {
       }
     }
     followers {
+      _id
       username
     }
     following {
+      _id
       username
     }
   }
@@ -175,9 +177,11 @@ query Me {
       }
     }
     followers {
+      _id
       username
     }
     following {
+      _id
       username
     }
   }
