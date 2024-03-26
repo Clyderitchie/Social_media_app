@@ -30,6 +30,7 @@ function FollowBtn({ userId }) {
         try {
             await followUser({ variables: { userId } });
             setIsFollowing(true);
+            window.location.reload();
         } catch (error) {
             console.error('Error following user:', error);
         }
@@ -39,6 +40,7 @@ function FollowBtn({ userId }) {
         try {
             await unfollowUser({ variables: { userId } });
             setIsFollowing(false);
+            window.location.reload();
         } catch (error) {
             console.error('Error unfollowing user:', error);
         }
