@@ -141,26 +141,12 @@ module.exports = {
             }
             throw AuthenticationError
         }, // Done
-        unFollowUser: async (parent, { userId }, context) => {
-            const { user } = context;
-            if (!user) {
-                throw new AuthenticationError('You must be logged in to perform this action');
+        unFollowUser: async (_, { userId }, context) => {
+            if (context.user) {
+                await User.findByIdAndUpdate(userId, { $pull: { followers: context.user._id } }, { new: true });
+                return await User.findByIdAndUpdate(context.user._id, { $pull: { following: userId } }, { new: true});
             }
-            try {
-                const currentUser = await User.findById(user._id);
-                const userToUnfollow = await User.findById(userId);
-                if (!userToUnfollow) {
-                    throw new UserInputError('User to unfollow not found');
-                }
-                currentUser.following = currentUser
-                    .following
-                    .filter(followedUser => followedUser._id.toString() !== userId);
-                await currentUser.save();
-                return currentUser;
-            } catch (error) {
-                console.error('Error unfollowing user:', error);
-                throw new ApolloError('Failed to unfollow user');
-            }
+            throw AuthenticationError
         },
         login: async (_, { email, password }) => {
             const user = await User.findOne({ email });

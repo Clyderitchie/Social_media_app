@@ -21,8 +21,6 @@ function UserProfile() {
 
     const user = data?.getUser || {};
 
-    console.log("UserProfile user data: ", data);
-
     return (
         <>
             <Profile otherProfileUserId={otherUserId} />

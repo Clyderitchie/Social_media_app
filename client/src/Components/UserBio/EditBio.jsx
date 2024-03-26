@@ -12,9 +12,9 @@ function EditBio() {
     const navigate = useNavigate();
     const [text, setText] = useState('');
     const [file, setFile] = useState(null);
-    const [location, setLocation] = useState('');
-    const [website, setWebsite] = useState('');
-    const [birthday, setBirthday] = useState('');
+    // const [location, setLocation] = useState('');
+    // const [website, setWebsite] = useState('');
+    // const [birthday, setBirthday] = useState('');
 
     const [addBio] = useMutation(CREATE_BIO);
 
@@ -44,7 +44,7 @@ function EditBio() {
                 }
             }
             const { data } = await addBio({
-                variables: { userId, text, profilePicture, location, website, birthday }
+                variables: { userId, text, profilePicture }
             })
             navigate('/profile')
 
@@ -82,30 +82,6 @@ function EditBio() {
                                         onChange={(e) => setText(e.target.value)}
                                     ></textarea>
                                     <label for="floatingTextarea2">Text</label>
-                                </div>
-                                <div className="form-floating">
-                                    <textarea className="form-control mb-4 BioInput"
-                                        id="floatingTextarea3"
-                                        value={website}
-                                        onChange={(e) => setWebsite(e.target.value)}
-                                    ></textarea>
-                                    <label for="floatingTextarea3">Website</label>
-                                </div>
-                                <div className="form-floating">
-                                    <textarea className="form-control mb-4 BioInput"
-                                        id="floatingTextarea4"
-                                        value={location}
-                                        onChange={(e) => setLocation(e.target.value)}
-                                    ></textarea>
-                                    <label for="floatingTextarea4">Location</label>
-                                </div>
-                                <div className="form-floating">
-                                    <textarea className="form-control mb-4 BioInput"
-                                        id="floatingTextarea5"
-                                        value={birthday}
-                                        onChange={(e) => setBirthday(e.target.value)}
-                                    ></textarea>
-                                    <label for="floatingTextarea5">Birthday</label>
                                 </div>
                             </div>
                             <div className="modal-footer">
