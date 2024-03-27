@@ -1,5 +1,5 @@
 {
-  "name": "socialNetwork",
+  "name": "socialnetwork",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,9 @@
     "express": "^4.18.2",
     "react-datepicker": "^6.1.0",
     "react-router": "^6.22.0"
+  },
+  "engines": {
+    "node": "^21.4.0"
   },
   "description": "",
   "devDependencies": {
