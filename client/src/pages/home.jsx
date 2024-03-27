@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 import Tabs from '../Components/TabSection/Tabs';
 import CreatePost from '../Components/PostContainer/CreatePost'
 import Post from '../Components/PostContainer/Post';
-import TopTrends from '../Components/WhatsHappening/TopTrends';
+import Trends from '../Components/Trends/TrendLayout';
 
 import './home.css'
 
@@ -33,7 +33,7 @@ function Home ({ handleLogout, isLoggedIn }) {
                         <Post userId={userId}/>
                     </div>
                     <div id="trendSection" className="col-3">
-                        <TopTrends />
+                        <Trends userId={userId}/>
                     </div>
                 </div>
             </div>
