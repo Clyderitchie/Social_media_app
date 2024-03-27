@@ -1,14 +1,14 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_USER } from '../../utils/queries';
+import { QUERY_USER } from '../utils/queries';
 
 import { useLocation } from 'react-router-dom'
 
-import Auth from '../../utils/auth';
-import Tabs from '../../Components/TabSection/Tabs';
-import TopTrends from '../../Components/WhatsHappening/TopTrends';
-import UserBio from '../../Components/UserBio/UserBio';
-import UserPost from '../../Components/PostContainer/SingleUserPost';
+import Auth from '../utils/auth';
+import Tabs from '../Components/TabSection/Tabs';
+import TopTrends from '../Components/WhatsHappening/TopTrends';
+import UserBio from '../Components/UserBio/UserBio';
+import UserPost from '../Components/PostContainer/SingleUserPost';
 
 function Profile({ userId, otherProfileUserId, activeUserId }) {
 

@@ -2,10 +2,10 @@ import React from "react";
 import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
 import { useQuery } from '@apollo/client';
-import { QUERY_USER } from '../../utils/queries';
+import { QUERY_USER } from '../utils/queries';
 
-import Auth from '../../utils/auth';
-import Profile from '../profile/profile';
+import Auth from '../utils/auth';
+import Profile from './profile';
 
 function UserProfile() {
 

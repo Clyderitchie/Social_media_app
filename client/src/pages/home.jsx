@@ -1,17 +1,15 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_ME } from '../../utils/queries';
+import { QUERY_ME } from '../utils/queries';
 
 
-import Auth from '../../utils/auth';
-import Tabs from '../../Components/TabSection/Tabs';
-import CreatePost from '../../Components/PostContainer/CreatePost'
-import Post from '../../Components/PostContainer/Post';
-import TopTrends from '../../Components/WhatsHappening/TopTrends';
-// import PostBtn from '../../Components/PostButton/Post';
+import Auth from '../utils/auth';
+import Tabs from '../Components/TabSection/Tabs';
+import CreatePost from '../Components/PostContainer/CreatePost'
+import Post from '../Components/PostContainer/Post';
+import TopTrends from '../Components/WhatsHappening/TopTrends';
 
-
-import './Home.css'
+import './home.css'
 
 function Home ({ handleLogout, isLoggedIn }) {
     

@@ -2,9 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useMutation } from '@apollo/client';
-import { LOGIN, CREATE_USER } from '../../utils/mutations';
+import { LOGIN, CREATE_USER } from '../utils/mutations';
 
-import './LoginForm.css';
+import './loginForm.css';
 
 const Login = ({ handleLogin }) => {
 
