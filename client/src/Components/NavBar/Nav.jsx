@@ -19,14 +19,14 @@ function Nav() {
                     </nav>
                 </div>
                 <div id="pages" className="container bg-dark">
-                    <nav className="navbar-expand-lg bg-dark d-flex justify-content-center">
+                    {/* <nav className="navbar-expand-lg bg-dark d-flex justify-content-center">
                         <div className="container-fluid text-light pageTitle">
                             For you
                         </div>
                         <div className="container-fluid text-light pageTitle">
                             For you
                         </div>
-                    </nav>
+                    </nav> */}
                 </div>
                 <div id="search" className="container bg-dark">
                     <nav className="navbar-expand-lg bg-dark">

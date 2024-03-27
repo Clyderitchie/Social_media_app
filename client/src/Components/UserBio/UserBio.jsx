@@ -72,7 +72,7 @@ function UserBio({ userId }) {
                         Followers
                         ({user.followers ? user.followers.length : 0})
                     </a>
-                    <ul className="nav nav-underline mt-4">
+                    {/* <ul className="nav nav-underline mt-4">
                         <li className="nav-item ProfileTabs">
                             <a href="#" aria-current="page" className="nav-link text-dark">Posts</a>
                         </li>
@@ -85,7 +85,7 @@ function UserBio({ userId }) {
                         <li className="nav-item ProfileTabs">
                             <a href="#" aria-current="page" className="nav-link text-dark"> Likes</a>
                         </li>
-                    </ul>
+                    </ul> */}
                 </div>
             </div>
         </>
