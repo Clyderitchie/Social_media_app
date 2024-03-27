@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom'
 
 import Auth from '../utils/auth';
 import Tabs from '../Components/TabSection/Tabs';
-import TopTrends from '../Components/WhatsHappening/TopTrends';
+import  Trends from '../Components/Trends/TrendLayout';
 import UserBio from '../Components/UserBio/UserBio';
 import UserPost from '../Components/PostContainer/SingleUserPost';
 
@@ -38,7 +38,7 @@ function Profile({ userId, otherProfileUserId, activeUserId }) {
                         <UserPost userId={profileUserId} />
                     </div>
                     <div id="trendSection" className="col-3">
-                        <TopTrends />
+                    <Trends userId={userId}/>
                     </div>
                 </div>
             </div>
