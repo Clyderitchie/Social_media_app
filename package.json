@@ -23,9 +23,6 @@
     "react-datepicker": "^6.1.0",
     "react-router": "^6.22.0"
   },
-  "engines": {
-    "node": "^21.4.0"
-  },
   "description": "",
   "devDependencies": {
     "nodemon": "^3.0.3"
