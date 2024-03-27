@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
-import Profile from '../ProfilePage/Profile';
+import Profile from '../profile/profile';
 
 function UserProfile() {
 
