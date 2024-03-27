@@ -5,6 +5,8 @@
 
 /* User */
 #postCreator {
+    text-decoration: none;
+    color: black;
     font-size: medium;
     font-weight: bold;
 }
@@ -23,6 +25,7 @@
 /* Post createdAt */
 #postCreatedAt {
     margin-top: 1%;
+    font-size: smaller;
 }
 
 /* Create post home page */

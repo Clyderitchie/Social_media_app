@@ -32,9 +32,9 @@ function Post({ userId }) {
             {postsData.toReversed().map((post) => (
                 <div id="postBody" className="card mb-4" key={post._id}>
                     <div className="card-body">
-                        <div className="d-flex justify-content-start">
-                            <h6 id="postCreator">
-                                @<Link to={post.userId._id ===
+                        <div id="username" className="d-flex justify-content-start">
+                            <h6>
+                                @<Link id="postCreator" to={post.userId._id ===
                                     loggedInUserId ?
                                     {
                                         pathname: `/user/${post.userId._id}`,
@@ -43,7 +43,7 @@ function Post({ userId }) {
                                     `/user/${post.userId._id}`}
                                     state={{ postUserId: post.userId._id }}
                                     >
-                                    {post.userId.username}
+                                    {post.userId.username} 
                                 </Link>
                             </h6>
                         </div>
@@ -51,14 +51,14 @@ function Post({ userId }) {
                             <p id="postText">{post.text}</p>
                         </div>
                         {post.imageUrl && (
-                            <div className="d-flex justify-content-center">
-                                <img src={post.imageUrl}
+                            <div  className="d-flex justify-content-center">
+                                <img className="rounded" src={post.imageUrl}
                                     alt="Post"
                                     style={{ maxWidth: '100%', height: 'auto' }} />
                             </div>
                         )}
                         <div className="d-flex justify-content-start">
-                            <p id="postCreatedAt">{post.createdAt}</p>
+                        <p id="postCreatedAt">{post.createdAt}</p>
                         </div>
                         <div className="d-flex justify-content-around">
                             <div>
