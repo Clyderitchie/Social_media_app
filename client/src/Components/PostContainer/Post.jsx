@@ -42,8 +42,8 @@ function Post({ userId }) {
                                     } :
                                     `/user/${post.userId._id}`}
                                     state={{ postUserId: post.userId._id }}
-                                    >
-                                    {post.userId.username} 
+                                >
+                                    {post.userId.username}
                                 </Link>
                             </h6>
                         </div>
@@ -51,21 +51,28 @@ function Post({ userId }) {
                             <p id="postText">{post.text}</p>
                         </div>
                         {post.imageUrl && (
-                            <div  className="d-flex justify-content-center">
+                            <div className="d-flex justify-content-center">
                                 <img className="rounded" src={post.imageUrl}
                                     alt="Post"
                                     style={{ maxWidth: '100%', height: 'auto' }} />
                             </div>
                         )}
                         <div className="d-flex justify-content-start">
-                        <p id="postCreatedAt">{post.createdAt}</p>
+                            <p id="postCreatedAt">{post.createdAt}</p>
                         </div>
-                        <div className="d-flex justify-content-around">
-                            <div>
-                                <LikeBtn postId={post._id} initialLikes={post.likes.length} />
+                        <div className="row">
+                            <div className="col-2 d-flex justify-content-start align-items-start">
+                                <div className=" ">
+                                    <div>
+                                        <LikeBtn postId={post._id} initialLikes={post.likes.length} />
+                                    </div>
+
+                                </div>
                             </div>
-                            <div>
-                                <Comment postId={post._id} />
+                            <div className="col-10 d-flex justify-content-end align-items-start">
+                                <div className=''>
+                                    <Comment postId={post._id} />
+                                </div>
                             </div>
                         </div>
                     </div>
