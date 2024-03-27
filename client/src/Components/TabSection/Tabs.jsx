@@ -34,7 +34,7 @@ function Tabs({ logout, userId}) {
             // <Link key={7} className='postBtn' state= {{userId: Auth.getProfile().data._id}} >
             //     {/* <PostBtn /> */}
             // </Link>,
-            <ActiveUser key={4}/>
+            // <ActiveUser key={4}/>
         ]} />
     )
 };
